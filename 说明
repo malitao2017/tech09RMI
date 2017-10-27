@@ -10,3 +10,17 @@ http://blog.csdn.net/zhaowen25/article/details/45443951
 rpc的实现之一：
 java原生的rmi
 
+RPC是远程过程调用的简称，广泛应用在大规模分布式应用中，作用是有助于系统的垂直拆分，使系统更易拓展。Java中的RPC框架比较多，各有特色，广泛使用的有RMI、Hessian、Dubbo等。RPC还有一个特点就是能够跨语言，本文只以JAVA语言里的RPC为例。
+1、RMI（远程方法调用）
+JAVA自带的远程方法调用工具，不过有一定的局限性，毕竟是JAVA语言最开始时的设计，后来很多框架的原理都基于RMI
+2、Hessian（基于HTTP的远程方法调用）
+基于HTTP协议传输，在性能方面还不够完美，负载均衡和失效转移依赖于应用的负载均衡器，Hessian的使用则与RMI类似，区别在于淡化了Registry的角色，通过显示的地址调用，利用HessianProxyFactory根据配置的地址create一个代理对象，另外还要引入Hessian的Jar包。
+3、Dubbo（淘宝开源的基于TCP的RPC框架）
+基于Netty的高性能RPC框架，是阿里巴巴开源的，总体原理如下：
+在了解Dubbo之前，要先对Zookeeper有深入的理解，当理解了zookeeper后，Dubbo也就了无秘密了。
+Dubbo的详细说明在淘宝开源里说的非常详细，在工作中很多生产项目都用了Dubbo，过程中也发现了很多需要注意的地方，尤其是那繁多的配置，设置不当都会让人烦脑，最好能再基于现有开源的Dubbo再定制优化一下。
+
+
+
+
+
